@@ -23,7 +23,7 @@ class TestGetUserInfo(unittest.TestCase):
         result = get_user_info(sample_mall_id)
         self.assertEqual(result, expected_data)
         mock_get.assert_called_once_with(
-            f"https://infra-apigw.hanpda.com/ptool_userinfo/user_info.php?display_type=json&user_id={sample_mall_id}",
+            f"https://a.com?display_type=json&user_id={sample_mall_id}",
             timeout=10
         )
 
@@ -40,7 +40,7 @@ class TestGetUserInfo(unittest.TestCase):
         with self.assertRaisesRegex(UserInfoError, f"API request failed with status code 404: Not Found"):
             get_user_info(sample_mall_id)
         mock_get.assert_called_once_with(
-            f"https://infra-apigw.hanpda.com/ptool_userinfo/user_info.php?display_type=json&user_id={sample_mall_id}",
+            f"https://a.com?display_type=json&user_id={sample_mall_id}",
             timeout=10
         )
 
@@ -66,7 +66,7 @@ class TestGetUserInfo(unittest.TestCase):
         with self.assertRaisesRegex(UserInfoError, f"API request timed out for mallid: {sample_mall_id}"):
             get_user_info(sample_mall_id)
         mock_get.assert_called_once_with(
-            f"https://infra-apigw.hanpda.com/ptool_userinfo/user_info.php?display_type=json&user_id={sample_mall_id}",
+            f"https://a.com?display_type=json&user_id={sample_mall_id}",
             timeout=10
         )
 
@@ -94,7 +94,7 @@ class TestGetUserInfo(unittest.TestCase):
         with self.assertRaisesRegex(UserInfoError, f"Failed to decode JSON response for mallid {sample_mall_id}.*Response text: This is not JSON..."):
             get_user_info(sample_mall_id)
         mock_get.assert_called_once_with(
-            f"https://infra-apigw.hanpda.com/ptool_userinfo/user_info.php?display_type=json&user_id={sample_mall_id}",
+            f"https://a.com?display_type=json&user_id={sample_mall_id}",
             timeout=10
         )
 

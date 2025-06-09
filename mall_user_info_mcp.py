@@ -19,7 +19,7 @@ def get_user_info(mallid: str) -> dict:
     Raises:
         UserInfoError: If there's an issue fetching or parsing user info.
     """
-    url = f"https://infra-apigw.hanpda.com/ptool_userinfo/user_info.php?display_type=json&user_id={mallid}"
+    url = f"https://a.com?display_type=json&user_id={mallid}"
     try:
         response = requests.get(url, timeout=10)  # Added timeout
         if response.status_code != 200:
